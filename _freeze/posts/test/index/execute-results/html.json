@@ -1,0 +1,16 @@
+{
+  "hash": "93b14172157745962d7025b27601a2da",
+  "result": {
+    "markdown": "---\ntitle: \"Test Post\"\nauthor: \"Abigail Smith\"\ndate: \"2024-01-31\"\ncategories: [news, code, analysis]\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(palmerpenguins)\nggplot(data = penguins, aes(x = bill_length_mm)) + geom_histogram()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
