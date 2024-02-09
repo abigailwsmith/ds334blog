@@ -3,11 +3,10 @@ title: "Test"
 author: "Abigail Smith"
 date: "2024-01-31"
 categories: [news, code, analysis]
-image: "image.jpg"
+image: "download.jpeg"
 ---
 
 This is a post with executable code.
 
 ```{r}
-1 + 1
 ```
