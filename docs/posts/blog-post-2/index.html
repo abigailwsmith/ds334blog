@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Abigail Smith">
+<meta name="dcterms.date" content="2024-02-20">
+
+<title>ds334blog - Blog Post 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ds334blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Blog Post 2</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Abigail Smith </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 20, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Hollywood films are infamous for their ridiculous casting age gaps in films, which can be amusing at times. I think it could be interesting to see what kind of factors from the films could predict how big the age gap could be.</p>
+<p>On the TidyTuesday GitHub repo I was able to find a data set called “age_gaps” which contains data about different couples from different Hollywood films. The data set includes, variables, such as the film name, the release year, and the name of both the characters and their actors, along with several other variables. The most important is the “age_difference” variable which provides the age difference of the characters in the film couple.</p>
+</section>
+<section id="question-of-interest" class="level1">
+<h1>Question of interest</h1>
+<p>What factors in the data set can best predict the age gap of different film couples and how well can it really be predicted?</p>
+</section>
+<section id="data-set-links" class="level1">
+<h1>Data set links</h1>
+<p>age_gaps: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-14/age_gaps.csv</p>
+</section>
+<section id="read-in-the-data-and-packages" class="level1">
+<h1>Read in the data and packages</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>age_gaps <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data/age_gaps.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tidying-and-wrangling-the-data" class="level1">
+<h1>Tidying and wrangling the data</h1>
+<p>For this I did not do a ton of tidying but, I wanted to mutate the character_1_gender so it made more sense. On the website, it is explained that character 1 is the older character, I thought that for the purpose of my model it would make more sense to alter the variable so that it is more clear what the variable is. Thus, I changed the variable of character_1_gender to gendergap, which shows the gender of the older character in the age gap.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tidyagegaps <span class="ot">&lt;-</span> age_gaps <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">gendergap =</span> <span class="fu">if_else</span>(character_1_gender <span class="sc">==</span> <span class="st">"woman"</span>, <span class="at">true =</span> <span class="st">"older woman"</span>, <span class="at">false =</span> <span class="st">"older man"</span>)) <span class="sc">|&gt;</span> <span class="fu">relocate</span>(gendergap) </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>tidyagegaps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,155 × 14
+   gendergap   movie_name     release_year director age_difference couple_number
+   &lt;chr&gt;       &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;         &lt;dbl&gt;
+ 1 older woman Harold and Ma…         1971 Hal Ash…             52             1
+ 2 older man   Venus                  2006 Roger M…             50             1
+ 3 older man   The Quiet Ame…         2002 Phillip…             49             1
+ 4 older man   The Big Lebow…         1998 Joel Co…             45             1
+ 5 older man   Beginners              2010 Mike Mi…             43             1
+ 6 older man   Poison Ivy             1992 Katt Sh…             42             1
+ 7 older man   Whatever Works         2009 Woody A…             40             1
+ 8 older man   Entrapment             1999 Jon Ami…             39             1
+ 9 older man   Husbands and …         1992 Woody A…             38             1
+10 older man   Magnolia               1999 Paul Th…             38             1
+# ℹ 1,145 more rows
+# ℹ 8 more variables: actor_1_name &lt;chr&gt;, actor_2_name &lt;chr&gt;,
+#   character_1_gender &lt;chr&gt;, character_2_gender &lt;chr&gt;,
+#   actor_1_birthdate &lt;date&gt;, actor_2_birthdate &lt;date&gt;, actor_1_age &lt;dbl&gt;,
+#   actor_2_age &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="initial-visualizations" class="level1">
+<h1>Initial Visualizations</h1>
+<p>To get a preliminary examination of the data, I made a few minor graphs just to get a feel for the variables I will use in my model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> tidyagegaps, <span class="fu">aes</span>(<span class="at">x =</span> actor_1_age, <span class="at">y =</span> age_difference)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Age Difference"</span>, <span class="at">x =</span> <span class="st">"Older Actor Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The above scatter plot shows how the age difference increases with the age of the older actor which makes sense as a large age gap is much more common with a much older actor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> tidyagegaps, <span class="fu">aes</span>(<span class="at">x =</span> release_year, <span class="at">y =</span> age_difference)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Age Difference"</span>, <span class="at">x =</span> <span class="st">"Release Year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This line plot above shows how age difference changes over the course of time, using release_year as the time variable. The graph did not come out very well as the age gap jumps around a lot, making the line plot so “zig zaggy”. With this plot it is challenging to identify a clear trend.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> tidyagegaps, <span class="fu">aes</span>(<span class="at">x =</span> gendergap, <span class="at">y =</span> age_difference)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Age Difference"</span>, <span class="at">x =</span> <span class="st">"Older Character Gender"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Lastly, the above box plot is perhaps the most interesting and most useful of these three variable plots. The plot is showing the difference in the age gap when the man is older vs.&nbsp;when the woman is. Unsurprisingly to me, there is a much bigger range in age differences when the man is older vs.&nbsp;the woman. This is a pattern I had noticed a lot especially, in older movies. It seems to be much more common to cast a much younger woman with an older man, as opposed to if the woman is older, it is more common to cast a man closer or woman closer to her own age.</p>
+</section>
+<section id="modelling" class="level1">
+<h1>Modelling</h1>
+<p>To make my final visualization of the data I created a linear model predicting age_difference based on release_year, actor_1_age (the age of the older actor), the interaction term between release_year and actor_1_age, and lastly, the gendergap variable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>modtidy <span class="ot">&lt;-</span> <span class="fu">lm</span>(age_difference <span class="sc">~</span> release_year <span class="sc">+</span> actor_1_age <span class="sc">+</span> actor_1_age<span class="sc">:</span>release_year <span class="sc">+</span> gendergap,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> tidyagegaps)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>modtidy <span class="sc">|&gt;</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  term                       estimate std.error statistic  p.value
+  &lt;chr&gt;                         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)              -366.       93.2         -3.93 9.04e- 5
+2 release_year                0.177     0.0466       3.81 1.49e- 4
+3 actor_1_age                13.2       2.13         6.20 8.03e-10
+4 gendergapolder woman       -2.82      0.439       -6.42 1.93e-10
+5 release_year:actor_1_age   -0.00632   0.00106     -5.94 3.82e- 9</code></pre>
+</div>
+</div>
+<p>The model shows that the y-intercept of the model is negative, with the release_year and actor_1_age coefficients both being positive, but the coefficients of both their interaction term and the gender gap with an older woman are both negative.</p>
+<p>Next, I created a grid of the data, to create an augmented dataset which calculated the confidence intervals for the model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gridmodtidy <span class="ot">&lt;-</span> tidyagegaps <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_grid</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">actor_1_age =</span> <span class="fu">seq_range</span>(actor_1_age, <span class="at">n =</span> <span class="dv">6</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">gendergap =</span> <span class="fu">c</span>(<span class="st">"older man"</span>, <span class="st">"older woman"</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">release_year =</span> <span class="fu">seq_range</span>(release_year, <span class="at">n =</span> <span class="dv">4</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>gridmodtidy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 3
+   actor_1_age gendergap   release_year
+         &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
+ 1        18   older man           1935
+ 2        18   older man           1964
+ 3        18   older man           1993
+ 4        18   older man           2022
+ 5        18   older woman         1935
+ 6        18   older woman         1964
+ 7        18   older woman         1993
+ 8        18   older woman         2022
+ 9        30.6 older man           1935
+10        30.6 older man           1964
+# ℹ 38 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>aug_tidy <span class="ot">&lt;-</span> <span class="fu">augment</span>(modtidy, <span class="at">newdata =</span> gridmodtidy,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">interval =</span> <span class="st">"confidence"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>aug_tidy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 6
+   actor_1_age gendergap   release_year .fitted .lower .upper
+         &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1        18   older man           1935  -5.85   -9.62  -2.08
+ 2        18   older man           1964  -4.01   -6.25  -1.77
+ 3        18   older man           1993  -2.17   -3.13  -1.21
+ 4        18   older man           2022  -0.327  -1.74   1.08
+ 5        18   older woman         1935  -8.67  -12.5   -4.84
+ 6        18   older woman         1964  -6.83   -9.15  -4.52
+ 7        18   older woman         1993  -4.99   -6.07  -3.91
+ 8        18   older woman         2022  -3.15   -4.61  -1.69
+ 9        30.6 older man           1935   6.40    4.21   8.59
+10        30.6 older man           1964   5.93    4.64   7.23
+# ℹ 38 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-of-the-model" class="level1">
+<h1>Plot of the model</h1>
+<p>Finally, I made a faceted line and scatter plot of the model, using the original data for the scatter plot. But the, augmented data for both the line plot, and the confidence intervals. I faceted the graph by gendergap and treated release_year as a factor, which split it into 4 of its most common values for each line on the graph, since I set n to 4 in the grid, I could not use every year value as it would be too many and overwhelm the graph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> age_gaps, <span class="fu">aes</span>(<span class="at">x =</span> actor_1_age, <span class="at">y =</span> age_difference)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span> <span class="fu">geom_ribbon</span>(<span class="at">data =</span> aug_tidy, <span class="fu">aes</span>(<span class="at">y =</span> .fitted, <span class="at">ymin =</span> .lower, <span class="at">ymax =</span> .upper, <span class="at">fill =</span> <span class="fu">as.factor</span>(release_year)), <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">data =</span> aug_tidy, <span class="fu">aes</span>(<span class="at">x =</span> actor_1_age, <span class="at">y =</span> .fitted, <span class="at">colour =</span> <span class="fu">as.factor</span>(release_year)), <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>gendergap) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">"Release Year"</span>, <span class="at">y =</span> <span class="st">"Age Difference"</span>, <span class="at">x =</span> <span class="st">"Older Actor Age"</span>, <span class="at">fill =</span> <span class="st">"Release Year Confidence Interval"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The resulting plot is a bit odd, due to such a negative y-intercept, the entire plot is shifted below zero, which is the main thing altering the graphs appearance so severely. However, there is a clear interaction point in the lines around 30 years for the older actor age. Additionally, it is quite obvious that the age difference increases with age of the older actor. The lines show that, the older movies had much bigger age gaps than the more recent ones which is unsurprising as big age gaps were much more common in older films. Interestingly, the confidence intervals seem to be bigger for the older movies than the newer ones.The lines in both individual plots are parallel which is to be expected. However, the lines in the graph with the older woman are slightly lower than in the one with the older man, this relates to the trend I observed in the side by side box plots. In summary, the conclusion, I can come to using this graph is that the age difference in between actors in films increases with the age of the older actor, and that difference tends to be greater when the man is older. Lastly, the age difference have gradually gone down over time in more recent films, meaning hopefully these big age gaps are a thing of the past.</p>
+</section>
+<section id="conclusion-and-wrap-up" class="level1">
+<h1>Conclusion and wrap-up</h1>
+<p>In conclusion, I feel that this model was a successful method answering my question of interest, of what best predicts the age gap in between actors in films. I found it an interesting and challenging method to answer the question. That being said, there are a couple of important things to note with the data, that most likely impacted my model and had I more time I would have liked to address. One, is that some films are listed multiple times in the data set as they had multiple couples, for me this did not matter a ton because I was just interested in the age gaps not necessarily the films, but if I had more time it would have been better to address this issue. Secondly and more majorly, there is the fact that some couples are not just a man and a woman but could also be two men or two women, I do not feel that my model did a great job accounting for this and I would have liked to do that better. Lastly, I just simply would have liked to tidy the data a bit more, it was a bit challenging to work with but certainly interesting.</p>
+</section>
+<section id="connection-to-class-ideas" class="level1">
+<h1>Connection to class ideas</h1>
+<p>Everything, in this post certainly related to something we learned in class, but I feel that the overarching idea of the modelling was the most obvious connection. I based my model very heavily off of the evals example we had done in section 9 in class, using that coding structure for inspiration, and using that to help guide me in interpreting the data.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
