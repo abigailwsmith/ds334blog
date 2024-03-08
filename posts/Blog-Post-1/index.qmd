@@ -1,5 +1,6 @@
 ---
-title: "Blog Post 1"
+title: "Groundhog Day Predictions"
+subtitle: "Blog Post 1"
 author: "Abigail Smith"
 date: "2024-02-05"
 categories: [news, code, analysis]
