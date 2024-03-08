@@ -1,19 +1,13 @@
 ---
 title: "About"
-image: profile.jpg
+image: IMG_5230.jpeg
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
-    - icon: linkedin
-      text: LinkedIn
-      href: https://linkedin.com
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/abigailwsmith
 
 ---
 
-About this blog
+This is my data visualization blog. I have a series of posts working with different data sets I have found on the Tidy Tuesday repository on GitHub. My personal GitHub account is accessible through the above GitHub icon. In each of my posts, I work with different types of visualizations that I have learned about in my Data334 (Data Visualization) course. 
