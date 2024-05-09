@@ -1,0 +1,191 @@
+---
+title: "Final Project"
+subtitle: "Blog Post 4"
+author: "Abigail Smith"
+date: "2024-05-10"
+categories: [news, code, analysis]
+image: "PitcherSubstancesCrackdown_Getty_Ringer.jpg"
+---
+
+# Introduction
+
+For the project I am interested in investigating the impact of the sticky stuff scandal on baseball as a whole. I will do so by creating a Shiny App using the StatCast data as well as some attendance and TV viewership data I found online. In looking at the attendance data I am curious to see if there is a noticeable pattern between the trend in attendance and the trends in spin rate. More specifically, I would like to see if attendance increased after the MLB cracked down on sticky substances. My theory is that I will see an increase in attendance following 2021, as generally speaking attendance is higher when the amount of home runs is higher. Take for example, the steroid era in the early 2000s, home runs were at an all time high because so many players were taking steroids, and attendance was extremely high as well. This leads me to believe that something like the sticky stuff scandal would have the opposite effect and harm attendance. I also think a brief glance at some world series tv viewership data I found will be relevant to this same idea. Although in this situation the sample size is smaller, I still think that a trend in world series viewership reflects on the viewership and popularity of baseball in that season as a whole. I would also like to see just how evident the impact of spin rate on batting statistics such as home runs, batting average, and slugging average are. Similarly, I want to see how spin rate impacted other pitching statistics, such as strike out percentage and the number of players hit by pitch. On a simple note, I would like to take a glance at pitching how spin rate has changed over time just to see how evident the direct influence of the sticky stuff scandal is.
+
+# Packages
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+library(here)
+library(readr)
+library(tidyverse)
+library(plotly)
+```
+
+# Data
+
+```{r}
+# Reading in the pitching data set
+pitching_df <- read_csv(here("data/pitchingstats.csv"))
+
+# Reading in each individual attendance data set
+attendance_2018 <- read_csv(here("data/2018attendance.csv"))
+attendance_2019 <- read_csv(here("data/2019attendance.csv"))
+attendance_2020 <- read_csv(here("data/2020attendance.csv"))
+attendance_2021 <- read_csv(here("data/2021attendance.csv"))
+attendance_2022 <- read_csv(here("data/2022attendance.csv"))
+attendance_2023 <- read_csv(here("data/2023attendance.csv"))
+attendance_2024 <- read_csv(here("data/2024attendance.csv"))
+
+# Reading in the world series data set
+worldseriesviewing <- read_csv(here("data/world-series-ratings.csv"))
+```
+
+```{r}
+# Creating a year variable in each of the attendance data sets
+attendance_2018$year <- 2018
+attendance_2019$year <- 2019
+attendance_2020$year <- 2020
+attendance_2021$year <- 2021
+attendance_2022$year <- 2022
+attendance_2023$year <- 2023
+attendance_2024$year <- 2024
+```
+
+```{r}
+# Create 3 joined data sets of the attendance data sets
+attendance2018_2019 <- full_join(attendance_2018, attendance_2019)
+attendance2020_2021 <- full_join(attendance_2020, attendance_2021)
+attendance2022_2023 <- full_join(attendance_2022, attendance_2023)
+
+# Join those 3 data sets together into 2 datasets
+attendance2018_2021 <- full_join(attendance2018_2019, attendance2020_2021)
+attendance2022_2024 <- full_join(attendance2022_2023, attendance_2024)
+
+# Join the last two big data sets in one big complete attendance data set
+attendancefull <- full_join(attendance2018_2021, attendance2022_2024)
+```
+
+```{r}
+# Save the attendance data set as a CSV so that I do not lose track of it
+write_csv(attendancefull, "attendancefull.csv")
+```
+
+# Cleaning and tidying the pitching data
+
+```{r}
+pitching_df <- pitching_df |> rename(pitcher = `last_name, first_name`)
+```
+
+```{r}
+pitching_cleaner <- pitching_df |> pivot_longer(c("sl_avg_spin", "ch_avg_spin", "cu_avg_spin", "si_avg_spin"), names_to = "pitch_type", values_to =  "spin_rate")
+
+pitching_cleaner <- pitching_cleaner |> mutate(pitch_type = str_remove(pitch_type, "_avg_spin")) |>  mutate(pitch_type = case_when(pitch_type == "sl" ~ "slider", pitch_type == "ch" ~ "changeup", pitch_type == "cu" ~ "curveball", pitch_type == "si" ~ "sinker"))  
+
+pitching_cleaner <- pitching_cleaner |> select(!c(sl_avg_speed, ch_avg_speed, si_avg_speed, cu_avg_speed, pa, player_id)) 
+```
+
+# Cleaning up attendance and tv viewership dataframes
+
+I do not need all of these variables in the data frame so I am going to get rid of some of them
+
+```{r}
+attendance_smaller <- attendancefull |> select(Tm, Attendance, `Attend/G`, year)
+```
+
+Same deal here with the tv viewership
+
+```{r}
+tv_views_smaller <- worldseriesviewing |> select(c(year, average_audience)) |> filter(year >= 2018 & year <= 2023)
+```
+
+# Static visualizations for the shiny app
+
+```{r}
+attendance_smaller_reorder <- attendance_smaller |> mutate(Tm = fct_reorder(Tm, `Attend/G`))
+ggplot(data = attendance_smaller_reorder, aes(x = Tm, y = `Attend/G`)) + geom_col() + coord_flip() + theme_minimal()
+```
+
+```{r}
+ggplot(data = attendance_smaller, aes(x = year, y = `Attend/G`, colour = Tm)) + geom_line()
+```
+
+```{r}
+ggplot(data = tv_views_smaller, aes(x = year, y = average_audience)) + geom_col()
+```
+
+```{r}
+ggplot(data = pitching_cleaner, aes(x= spin_rate, y = home_run, colour = pitch_type)) + geom_point()
+```
+
+```{r}
+ggplot(data = pitching_cleaner, aes(x = spin_rate)) + geom_histogram() + facet_wrap(~year) + theme_minimal() + labs(title = "Histogram of spin rate facted by year")
+```
+
+# Shiny app
+
+```{r}
+library(shiny)
+year_choices_pitching <- pitching_cleaner |> distinct(year) |> pull(year)
+y_var_choices <- names(pitching_cleaner)[c(3:8)]
+pitch_choice <- pitching_cleaner |> distinct(pitch_type) |> pull(pitch_type)
+x_var <- names(attendance_smaller)[c(2, 3)]
+year_choices_attendance <- attendance_smaller|> distinct(year) |> pull(year)
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      radioButtons("year_sel", label = "Choose a year for pitching:", choices = year_choices_pitching),
+      selectizeInput("pitch_sel", label = "Choose pitch type:",
+                     choices = pitching_cleaner$pitch_type, selected = "slider",
+                     multiple = TRUE),
+      selectInput("y_var_sel", label = "Choose a response variable for pitching:", choices = y_var_choices),
+      radioButtons("x_sel", label = "Choose an attendance variable:", choices = x_var),
+      radioButtons("year_sel_attendance", label = "Choose a year for the attendance:", choices = year_choices_pitching),
+      selectizeInput("tm_sel", label = "Choose a team:", choices = attendance_smaller$Tm, selected = "Arizona Diamondbacks", multiple = TRUE)
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Pitching", plotOutput("scatterplot"), plotOutput("spinhist"),  dataTableOutput("pitching_raw_data")),
+        tabPanel("Attendance", plotOutput("attendance_line"), plotOutput("barplot"), dataTableOutput("attendance_raw_data")),
+        tabPanel("TV Viewership", plotOutput("audience_bar"), dataTableOutput("audience_raw_data"))
+      )
+    )
+  )
+  
+)
+
+
+server <- function(input, output, session) {
+ pitching_reactive <- reactive({
+   pitching1 <- pitching_cleaner |> filter(year == input$year_sel) |> filter(pitch_type %in% input$pitch_sel)
+})
+ 
+output$scatterplot <- renderPlot({ggplot(pitching_reactive(), aes(x= spin_rate, y = .data[[input$y_var_sel]], colour = pitch_type)) + geom_point() + theme_minimal() + labs(title = glue::glue("Scatterplot of spin rate against",  input$y_var_sel, " in ", input$year_sel))})
+
+
+output$spinhist <- renderPlot({ggplot(data = pitching_cleaner, aes(x = spin_rate)) + geom_histogram() + facet_wrap(~year) + theme_minimal() + labs(title = "Histogram of spin rate facted by year")})
+
+  attendance_reactive <- reactive({
+    attendance1 <- attendance_smaller |> filter(year == input$year_sel_attendance) |>  mutate(Tm = fct_reorder(Tm, .data[[input$x_sel]]))
+  })
+  
+   attendancereactive <- reactive({
+   team1 <- attendance_smaller |> filter(Tm %in% input$tm_sel)})
+output$barplot <- renderPlot({ggplot(attendance_reactive(), aes(x = Tm, y = .data[[input$x_sel]])) + geom_col() + coord_flip() + theme_minimal() + labs(title = glue::glue("Barplot of ", input$x_sel, " in ", input$year_sel_attendance)) })
+
+output$attendance_line <- renderPlot({ggplot(attendancereactive(), aes(x = year, y = `Attend/G`, colour = Tm)) + geom_line() + theme_minimal() + labs(title = "Average Attendance per Game Over Time ") })
+
+output$audience_bar <- renderPlot({ggplot(data = tv_views_smaller, aes(x = year, y = average_audience)) + geom_col() + theme_minimal() + labs(title = "Average TV Audience per World Series Game In Each Year ") })
+
+
+output$attendance_raw_data <- renderDataTable({attendance_smaller})
+
+output$audience_raw_data <- renderDataTable({tv_views_smaller})
+
+output$pitching_raw_data <- renderDataTable({pitching_cleaner})
+}
+
+shinyApp(ui, server)
+```
+
+# Findings
+
+When playing around with the app, I found that there is some pretty clear difference in the hitting statistics before 2021 as opposed to after. Things like strike out percentage were higher prior to 2021 as opposed to things like opposing home runs which went up after 2021. The impact of the sticky substances is most evident in the faceted histogram of spin rate, it is quite clear that the spin rate was higher previous to 2021. In the attendance graphs as well, there is a considerable increase in both the average and total attendance following 2021. This change is somewhat less evident in the TV viewership bar plot however. What is most evident in all graphs is the 2020 season, this is especially interesting in the line graph which shows a gap during the 2020 season which is because attendance was not allowed during the COVID-19 pandemic. Additionally, the 2020 season was shortened so all statistics for that season will be offset. Another season in the data set that will be strange is the 2024 season since that one had only just begun at the time of me making the app. 
