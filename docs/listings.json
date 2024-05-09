@@ -2,11 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/blog_post_4/index.html",
+      "/posts/blog_post_3/index.html",
       "/posts/blog-post-2/index.html",
-      "/posts/Blog-Post-1/index.html",
-      "/posts/post-with-code/index.html",
-      "/posts/test/index.html",
-      "/posts/welcome/index.html"
+      "/posts/Blog-Post-1/index.html"
     ]
   }
 ]

@@ -22,13 +22,13 @@ Is there a clear trend in predictions based on region? To be specific, are shado
 # Data set links
 
 Groundhogs:
-https://github.com/rfordatascience/tidytuesday/blob/66f1fa48a2c09131e5500a7bf12201c6581f28fa/data/2024/2024-01-30/groundhogs.csv &
+[https://github.com/rfordatascience/tidytuesday/blob/66f1fa48a2c09131e5500a7bf12201c6581f28fa/data/2024/2024-01-30/groundhogs.csv]()
 
 Predictions: 
-https://github.com/rfordatascience/tidytuesday/blob/66f1fa48a2c09131e5500a7bf12201c6581f28fa/data/2024/2024-01-30/predictions.csv).
+[https://github.com/rfordatascience/tidytuesday/blob/66f1fa48a2c09131e5500a7bf12201c6581f28fa/data/2024/2024-01-30/predictions.csv]()
 
 State_df: 
-https://cran.r-project.org/web/packages/maps/maps.pdf
+[https://cran.r-project.org/web/packages/maps/maps.pdf]()
 
 # Read in the data and packages
 
